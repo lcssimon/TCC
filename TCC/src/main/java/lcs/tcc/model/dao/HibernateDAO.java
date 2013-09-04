@@ -60,6 +60,5 @@ public class HibernateDAO<T> implements InterfaceDAO<T>, Serializable{
     @Override
     public List<T> getListDetachedCriteria(DetachedCriteria criteria) {
        return criteria.getExecutableCriteria(session).list();
-    }
-    
+    }    
 }
