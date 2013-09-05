@@ -37,6 +37,19 @@ public class Hospedagem implements Serializable {
     @ForeignKey(name = "leitoHospedagem")
     private Leito leito;
 
+    public Hospedagem() {
+        this.leito = new Leito();
+        this.hospede = new Hospede();
+    }
+
+    public Leito getLeito() {
+        return leito;
+    }
+
+    public void setLeito(Leito leito) {
+        this.leito = leito;
+    }
+
     public Integer getIdHospedagem() {
         return idHospedagem;
     }
@@ -106,5 +119,4 @@ public class Hospedagem implements Serializable {
         }
         return true;
     }
-    
 }
