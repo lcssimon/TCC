@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import org.hibernate.annotations.ForeignKey;
@@ -55,9 +56,11 @@ public class Funcionario implements Serializable {
     private String senha;
     @Column(length = 1)
     private String acTotal;
+    
     @ManyToOne(optional = false)
     @ForeignKey(name = "cidadeFuncionario")
-    private Cidade cidade;
+    private Cidade cidade;    
+    
 
     public Integer getIdFuncionario() {
         return idFuncionario;

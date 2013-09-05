@@ -1,17 +1,17 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package lcs.tcc.model.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import org.hibernate.annotations.ForeignKey;
@@ -53,9 +53,22 @@ public class Hospede implements Serializable {
     private String nomePai;
     @Column(length = 50)
     private String nomeMae;
+    
     @ManyToOne(optional = false)
     @ForeignKey(name = "cidadeHospede")
     private Cidade cidade;
+    
+    @OneToMany(mappedBy = "hospede", fetch = FetchType.LAZY)
+    @ForeignKey(name = "hospedeHospedagem")
+    private List<Hospedagem> hospedagens;
+
+    public List<Hospedagem> getHospedagens() {
+        return hospedagens;
+    }
+
+    public void setHospedagens(List<Hospedagem> hospedagens) {
+        this.hospedagens = hospedagens;
+    }
 
     public Integer getIdHospede() {
         return idHospede;
