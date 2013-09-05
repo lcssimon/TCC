@@ -1,3 +1,7 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package lcs.tcc.model.entities;
 
 import java.io.Serializable;
@@ -13,13 +17,13 @@ import javax.persistence.Temporal;
 import org.hibernate.annotations.ForeignKey;
 
 @Entity
-@Table(name = "funcionario")
-public class Funcionario implements Serializable {
+@Table(name = "hospede")
+public class Hospede implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idFuncionario;
+    private Integer idHospede;
     @Column(length = 60, nullable = false)
     private String nome;
     @Column(length = 10)
@@ -43,40 +47,26 @@ public class Funcionario implements Serializable {
     private String telefone;
     @Column(length = 14)
     private String celuluar;
-    @Column(length = 30)
-    private String cargo;
     @Column(length = 50)
     private String email;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataAdminissao;
-    @Column(length = 10)
-    private String login;
-    @Column(length = 10)
-    private String senha;
-    @Column(length = 1)
-    private String acTotal;
+    @Column(length = 50)
+    private String nomePai;
+    @Column(length = 50)
+    private String nomeMae;
     @ManyToOne(optional = false)
-    @ForeignKey(name = "cidadeFuncionario")
+    @ForeignKey(name = "cidadeHospede")
     private Cidade cidade;
 
-    public Integer getIdFuncionario() {
-        return idFuncionario;
+    public Integer getIdHospede() {
+        return idHospede;
     }
 
-    public void setIdFuncionario(Integer idFuncionario) {
-        this.idFuncionario = idFuncionario;
+    public void setIdHospede(Integer idHospede) {
+        this.idHospede = idHospede;
     }
 
     public String getNome() {
         return nome;
-    }
-
-    public Cidade getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(Cidade cidade) {
-        this.cidade = cidade;
     }
 
     public void setNome(String nome) {
@@ -139,6 +129,14 @@ public class Funcionario implements Serializable {
         this.Bairro = Bairro;
     }
 
+    public Cidade getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
+    }
+
     public String getCep() {
         return cep;
     }
@@ -171,30 +169,6 @@ public class Funcionario implements Serializable {
         this.celuluar = celuluar;
     }
 
-    public String getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
-
-    public Date getDataAdminissao() {
-        return dataAdminissao;
-    }
-
-    public void setDataAdminissao(Date dataAdminissao) {
-        this.dataAdminissao = dataAdminissao;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -203,26 +177,26 @@ public class Funcionario implements Serializable {
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getNomePai() {
+        return nomePai;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setNomePai(String nomePai) {
+        this.nomePai = nomePai;
     }
 
-    public String getAcTotal() {
-        return acTotal;
+    public String getNomeMae() {
+        return nomeMae;
     }
 
-    public void setAcTotal(String acTotal) {
-        this.acTotal = acTotal;
+    public void setNomeMae(String nomeMae) {
+        this.nomeMae = nomeMae;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 67 * hash + (this.idFuncionario != null ? this.idFuncionario.hashCode() : 0);
+        int hash = 7;
+        hash = 97 * hash + (this.idHospede != null ? this.idHospede.hashCode() : 0);
         return hash;
     }
 
@@ -234,8 +208,8 @@ public class Funcionario implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Funcionario other = (Funcionario) obj;
-        if (this.idFuncionario != other.idFuncionario && (this.idFuncionario == null || !this.idFuncionario.equals(other.idFuncionario))) {
+        final Hospede other = (Hospede) obj;
+        if (this.idHospede != other.idHospede && (this.idHospede == null || !this.idHospede.equals(other.idHospede))) {
             return false;
         }
         return true;
