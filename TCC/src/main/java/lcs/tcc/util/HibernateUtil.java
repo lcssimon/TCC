@@ -19,7 +19,7 @@ public class HibernateUtil {
            Configuration configuration = new Configuration().configure();
            ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
            sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-           System.out.println("cConexao Aberta");
+           System.out.println("Conexao Aberta");
         } catch (Exception ex) {
             System.out.println("Erro na conexao"+ex);
             throw  new ExceptionInInitializerError(ex);
