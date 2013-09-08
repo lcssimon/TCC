@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>lcs.tcc</groupId>
+    <groupId>br.com.semeru</groupId>
     <artifactId>TCC</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
@@ -132,31 +132,6 @@
     </repositories>
 
     <dependencies>
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-            <version>1.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate</artifactId>
-            <version>3.2.5.ga</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.sql</groupId>
-            <artifactId>jdbc-stdext</artifactId>
-            <version>2.0</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.transaction</groupId>
-            <artifactId>jta</artifactId>
-            <version>1.0.1B</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.derby</groupId>
-            <artifactId>derbyclient</artifactId>
-            <version>10.8.2.2</version>
-        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
@@ -362,7 +337,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>3.3.2.GA</version>
+            <version>${hibernate.version}</version>
         </dependency>
                 
         <!-- ########## HIBERNATE-EHCACHE ########## -->
@@ -393,7 +368,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
         </dependency>-->
-        
         <dependency>
             <groupId>postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -542,57 +516,34 @@
         </dependency>
         
     </dependencies>
-    
-   
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
-                    <compilerArguments>
-                        <endorseddirs>${endorsed.dir}</endorseddirs>
-                    </compilerArguments>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.1.1</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.1</version>
-                <executions>
-                    <execution>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${endorsed.dir}</outputDirectory>
-                            <silent>true</silent>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>javax</groupId>
-                                    <artifactId>javaee-endorsed-api</artifactId>
-                                    <version>6.0</version>
-                                    <type>jar</type>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
             </plugin>
         </plugins>
     </build>
+       
 
 </project>
